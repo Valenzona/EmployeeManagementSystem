@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
-
-
+using System.Windows.Forms;
 namespace EmployeeManagementSystem
 {
     public partial class RegisterForm : Form
     {
-        SqlConnection connect
-            = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\This-PC\Documents\employeedb.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\This-PC\Documents\employees.mdf;Integrated Security=True;Connect Timeout=30");
 
         public RegisterForm()
         {
@@ -42,70 +32,59 @@ namespace EmployeeManagementSystem
 
         private void signup_Btn_Click(object sender, EventArgs e)
         {
-            if (signup_username.Text == ""
-                || signup_password.Text == "")
+            if (signup_username.Text == "" || signup_password.Text == "")
             {
-                MessageBox.Show("Please fill all blank fields"
-                    , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (connect.State != ConnectionState.Open)
+                try
                 {
-                    try
+                    connect.Open();
+
+                    // Check if the username already exists
+                    string selectUsername = "SELECT COUNT(id) FROM users WHERE username = @username";
+
+                    using (SqlCommand checkUser = new SqlCommand(selectUsername, connect))
                     {
-                        connect.Open();
-                        // TO CHECK IF THE USER IS EXISTING ALREADY
-                        string selectUsername = "SELECT COUNT(id) FROM users WHERE username = @user";
+                        checkUser.Parameters.AddWithValue("@username", signup_username.Text.Trim());
+                        int count = (int)checkUser.ExecuteScalar();
 
-                        using (SqlCommand checkUSer = new SqlCommand(selectUsername, connect))
+                        if (count >= 1)
                         {
-                            checkUSer.Parameters.AddWithValue("@user", signup_username.Text.Trim());
-                            int count = (int)checkUSer.ExecuteScalar();
+                            MessageBox.Show(signup_username.Text.Trim() + " is already taken", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            DateTime today = DateTime.Today;
 
-                            if (count >= 1)
+                            // Insert new user
+                            string insertData = "INSERT INTO users (username, password, date_register) VALUES(@username, @password, @dateReg)";
+
+                            using (SqlCommand cmd = new SqlCommand(insertData, connect))
                             {
-                                MessageBox.Show(signup_username.Text.Trim() + "is already taken"
-                                    , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                DateTime today = DateTime.Today;
+                                cmd.Parameters.AddWithValue("@username", signup_username.Text.Trim());
+                                cmd.Parameters.AddWithValue("@password", signup_password.Text.Trim());
+                                cmd.Parameters.AddWithValue("@dateReg", today);
 
-                                string insertData = "INSER INTO users " +
-                                    "(username, password, date_register) " +
-                                    "VALUES(@username, @password, @dataReg)";
-                                using (SqlCommand cmd = new SqlCommand(insertData))
-                                {
-                                    cmd.Parameters.AddWithValue("@username", signup_username.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@password", signup_password.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@dataReg", today);
+                                cmd.ExecuteNonQuery();
 
-                                    cmd.ExecuteNonQuery();
+                                MessageBox.Show("Registered successfully!", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    MessageBox.Show("Registerered successfully!"
-                                        , "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    Form1 loginForm = new Form1();
-                                    loginForm.Show();
-                                    this.Hide();
-                                }
+                                Form1 loginForm = new Form1();
+                                loginForm.Show();
+                                this.Hide();
                             }
                         }
                     }
-
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex
-                    , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
-
-                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
                 }
             }
         }
