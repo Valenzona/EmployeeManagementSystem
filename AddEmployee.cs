@@ -17,7 +17,7 @@ namespace EmployeeManagementSystem
 {
     public partial class AddEmployee : UserControl
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\This-PC\Documents\employees.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\This-PC\Documents\employee.mdf;Integrated Security=True;Connect Timeout=30");
         public AddEmployee()
         {
             InitializeComponent();
@@ -105,7 +105,7 @@ namespace EmployeeManagementSystem
 
                                 using (SqlCommand cmd = new SqlCommand(insertData, connect))
                                 {
-                                    cmd.Parameters.AddWithValue("@employeeID", addEmployee_id.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@employeesID", addEmployee_id.Text.Trim());
                                     cmd.Parameters.AddWithValue("@fullName", addEmployee_fullName.Text.Trim());
                                     cmd.Parameters.AddWithValue("@gender", addEmployee_gender.Text.Trim());
                                     cmd.Parameters.AddWithValue("@contactNum", addEmployee_phoneNumber .Text.Trim());
@@ -196,6 +196,11 @@ namespace EmployeeManagementSystem
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
