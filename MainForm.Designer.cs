@@ -58,6 +58,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1100, 35);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
             // 
@@ -190,7 +191,7 @@
             // 
             // dashboard1
             // 
-            this.dashboard1.Location = new System.Drawing.Point(0, -3);
+            this.dashboard1.Location = new System.Drawing.Point(6, 29);
             this.dashboard1.Name = "dashboard1";
             this.dashboard1.Size = new System.Drawing.Size(875, 568);
             this.dashboard1.TabIndex = 2;

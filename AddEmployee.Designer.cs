@@ -72,12 +72,17 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(32, 62);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(761, 232);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label1
             // 
@@ -149,6 +154,7 @@
             this.addEmployee_clearBtn.TabIndex = 15;
             this.addEmployee_clearBtn.Text = "Clear";
             this.addEmployee_clearBtn.UseVisualStyleBackColor = false;
+            this.addEmployee_clearBtn.Click += new System.EventHandler(this.addEmployee_clearBtn_Click);
             // 
             // addEmployee_deleteBtn
             // 
@@ -161,6 +167,7 @@
             this.addEmployee_deleteBtn.TabIndex = 14;
             this.addEmployee_deleteBtn.Text = "Delete";
             this.addEmployee_deleteBtn.UseVisualStyleBackColor = false;
+            this.addEmployee_deleteBtn.Click += new System.EventHandler(this.addEmployee_deleteBtn_Click);
             // 
             // addEmployee_updateBtn
             // 
@@ -173,6 +180,7 @@
             this.addEmployee_updateBtn.TabIndex = 13;
             this.addEmployee_updateBtn.Text = "Update";
             this.addEmployee_updateBtn.UseVisualStyleBackColor = false;
+            this.addEmployee_updateBtn.Click += new System.EventHandler(this.addEmployee_updateBtn_Click);
             // 
             // addEmployee_addBtn
             // 
@@ -317,6 +325,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "AddEmployee";
             this.Size = new System.Drawing.Size(875, 587);
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -1,4 +1,5 @@
-﻿CREATE TABLE users	
+﻿
+CREATE TABLE users	
 (
 	id INT PRIMARY KEY IDENTITY(1,1),
 	username VARCHAR(MAX) NULL,
@@ -12,7 +13,7 @@ SELECT * FROM users
 CREATE TABLE employees
 (
 	id INT PRIMARY KEY IDENTITY(1,1),
-	employees_id VARCHAR(MAX) NULL,
+	employee_id VARCHAR(MAX) NULL,
 	full_name VARCHAR(MAX) NULL,
 	gender VARCHAR(MAX) NULL,
 	contact_number VARCHAR(MAX) NULL,
@@ -28,3 +29,7 @@ SELECT * FROM employees
 
 ALTER TABLE employees
 ADD status VARCHAR(MAX) NULL
+
+SELECT * FROM employees WHERE delete_date IS NOT NULL
+
+DELETE FROM employees

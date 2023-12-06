@@ -68,5 +68,10 @@ namespace EmployeeManagementSystem
             addEmployee1.Visible = false;
             salary1.Visible = true;
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
