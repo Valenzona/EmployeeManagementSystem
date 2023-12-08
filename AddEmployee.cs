@@ -29,6 +29,16 @@ namespace EmployeeManagementSystem
             //TO DISPLAY THE DATA FROM DATABASE TO YOUR DATA GRID VIEW 
             displayEmployeeData();
         }
+
+        public void RefreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)RefreshData);
+                return;
+            }
+            displayEmployeeData();
+        }
         public void displayEmployeeData()
         {
             EmployeeData ed = new EmployeeData();

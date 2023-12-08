@@ -25,6 +25,17 @@ namespace EmployeeManagementSystem
             disableFields();
 
         }
+        public void RefreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)RefreshData);
+                return;
+            }
+
+            displayEmployees();
+            disableFields();
+        }
 
         public void disableFields()
         {

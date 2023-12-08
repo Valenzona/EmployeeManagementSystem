@@ -25,6 +25,18 @@ namespace EmployeeManagementSystem
             displayIE();
         }
 
+        public void RefreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)RefreshData);
+                return;
+            }
+            displayTE();
+            displayAE();
+            displayIE();
+        }
+
         public void displayTE()
         {
             if (connect.State != ConnectionState.Open)
