@@ -77,6 +77,7 @@
             this.salary_clearBtn.TabIndex = 14;
             this.salary_clearBtn.Text = "Clear";
             this.salary_clearBtn.UseVisualStyleBackColor = false;
+            this.salary_clearBtn.Click += new System.EventHandler(this.salary_clearBtn_Click);
             // 
             // salary_updateBtn
             // 
