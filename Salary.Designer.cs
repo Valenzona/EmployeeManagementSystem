@@ -42,6 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.salary_printBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -51,6 +52,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.salary_printBtn);
             this.panel1.Controls.Add(this.salary_clearBtn);
             this.panel1.Controls.Add(this.salary_updateBtn);
             this.panel1.Controls.Add(this.salary_salary);
@@ -195,6 +197,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Employees";
             // 
+            // salary_printBtn
+            // 
+            this.salary_printBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.salary_printBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.salary_printBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salary_printBtn.Location = new System.Drawing.Point(74, 369);
+            this.salary_printBtn.Name = "salary_printBtn";
+            this.salary_printBtn.Size = new System.Drawing.Size(111, 33);
+            this.salary_printBtn.TabIndex = 15;
+            this.salary_printBtn.Text = "Print";
+            this.salary_printBtn.UseVisualStyleBackColor = false;
+            this.salary_printBtn.Click += new System.EventHandler(this.salary_printBtn_Click);
+            // 
             // Salary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +244,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button salary_clearBtn;
         private System.Windows.Forms.Button salary_updateBtn;
+        private System.Windows.Forms.Button salary_printBtn;
     }
 }

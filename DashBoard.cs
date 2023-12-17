@@ -150,7 +150,61 @@ namespace EmployeeManagementSystem
 
         }
 
-        
+        private void label4_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void dashboard_IE_Click(object sender, EventArgs e)
+        {
+            if (connect.State != ConnectionState.Open)
+            {
+                try
+                {
+                    connect.Open();
+
+                    string selectData = "SELECT COUNT(id) FROM employees WHERE status = @status " +
+                        "AND delete_date IS NULL";
+
+                    using (SqlCommand cmd = new SqlCommand(selectData, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@status", "Ianctive");
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            int count = Convert.ToInt32(reader[0]);
+                            dashboard_IE.Text = count.ToString();
+                        }
+                        reader.Close();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex, "Error Message"
+                        , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
+            }
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dashboard_TE_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

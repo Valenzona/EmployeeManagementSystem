@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Common;
+using System.Drawing.Printing;
 
 namespace EmployeeManagementSystem
 {
@@ -156,5 +157,57 @@ namespace EmployeeManagementSystem
         {
             clearFields();
         }
+
+        private void salary_printBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PrintDialog printDialog = new PrintDialog();
+                PrintDocument printDocument = new PrintDocument();
+
+                printDialog.Document = printDocument;
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+                    printDocument.Print();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+       
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            try
+            {
+                // Define the content to be printed
+                string content = $"Employee ID: {salarty_employeeID.Text}\n" +
+                                 $"Name: {salary_name.Text}\n" +
+                                 $"Position: {salary_position.Text}\n" +
+                                 $"Salary: {salary_salary.Text}\n";
+
+                // Create a font and brush for the text
+                Font font = new Font("Arial", 12);
+                SolidBrush brush = new SolidBrush(Color.Black);
+
+                // Set the position for printing
+                PointF point = new PointF(10, 10);
+
+                // Draw the content on the page
+                e.Graphics.DrawString(content, font, brush, point);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
     }
 }

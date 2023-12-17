@@ -1,0 +1,39 @@
+-- Create the student table
+CREATE TABLE student (
+    studentId INT PRIMARY KEY,
+    studentIdNo INT,
+    studentLastname VARCHAR(50),
+    studentFirstname VARCHAR(50),
+    studentCourseYr VARCHAR(10),
+    studentGender CHAR(1)
+);
+
+-- Insert data into the student table
+INSERT INTO student (studentId, studentIdNo, studentLastname, studentFirstname, studentCourseYr, studentGender)
+VALUES
+(1, 22201867, 'ABASTILLAS', 'ANGEL DORIE', 'BSIT 3', 'F'),
+-- ... (Insert the rest of the data)
+
+-- 1. List all the data with Sort with Idno Ascending
+SELECT *
+FROM student
+ORDER BY studentIdNo ASC;
+
+-- 2. List all the data that has an even studentId
+SELECT *
+FROM student
+WHERE studentId % 2 = 0;
+
+-- 3. Count the students by Gender (Output count for male and female)
+SELECT studentGender, COUNT(*) as GenderCount
+FROM student
+GROUP BY studentGender;
+
+-- 4. Update the student CourseYr to "BSIT 4" where studentId equals 25
+UPDATE student
+SET studentCourseYr = 'BSIT 4'
+WHERE studentId = 25;
+
+-- 5. Remove Male students
+DELETE FROM student
+WHERE studentGender = 'M';

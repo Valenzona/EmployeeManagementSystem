@@ -53,6 +53,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.addEmployee_printBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -99,6 +100,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.addEmployee_printBtn);
             this.panel2.Controls.Add(this.addEmployee_status);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.addEmployee_clearBtn);
@@ -148,7 +150,7 @@
             this.addEmployee_clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.addEmployee_clearBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addEmployee_clearBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEmployee_clearBtn.Location = new System.Drawing.Point(544, 153);
+            this.addEmployee_clearBtn.Location = new System.Drawing.Point(424, 153);
             this.addEmployee_clearBtn.Name = "addEmployee_clearBtn";
             this.addEmployee_clearBtn.Size = new System.Drawing.Size(111, 33);
             this.addEmployee_clearBtn.TabIndex = 15;
@@ -161,7 +163,7 @@
             this.addEmployee_deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.addEmployee_deleteBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addEmployee_deleteBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEmployee_deleteBtn.Location = new System.Drawing.Point(418, 153);
+            this.addEmployee_deleteBtn.Location = new System.Drawing.Point(295, 153);
             this.addEmployee_deleteBtn.Name = "addEmployee_deleteBtn";
             this.addEmployee_deleteBtn.Size = new System.Drawing.Size(111, 33);
             this.addEmployee_deleteBtn.TabIndex = 14;
@@ -174,7 +176,7 @@
             this.addEmployee_updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.addEmployee_updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addEmployee_updateBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEmployee_updateBtn.Location = new System.Drawing.Point(288, 153);
+            this.addEmployee_updateBtn.Location = new System.Drawing.Point(168, 153);
             this.addEmployee_updateBtn.Name = "addEmployee_updateBtn";
             this.addEmployee_updateBtn.Size = new System.Drawing.Size(111, 33);
             this.addEmployee_updateBtn.TabIndex = 13;
@@ -187,7 +189,7 @@
             this.addEmployee_addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.addEmployee_addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addEmployee_addBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEmployee_addBtn.Location = new System.Drawing.Point(160, 153);
+            this.addEmployee_addBtn.Location = new System.Drawing.Point(51, 153);
             this.addEmployee_addBtn.Name = "addEmployee_addBtn";
             this.addEmployee_addBtn.Size = new System.Drawing.Size(111, 33);
             this.addEmployee_addBtn.TabIndex = 12;
@@ -317,6 +319,19 @@
             this.label2.Text = "Employee ID:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // addEmployee_printBtn
+            // 
+            this.addEmployee_printBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.addEmployee_printBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addEmployee_printBtn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEmployee_printBtn.Location = new System.Drawing.Point(553, 153);
+            this.addEmployee_printBtn.Name = "addEmployee_printBtn";
+            this.addEmployee_printBtn.Size = new System.Drawing.Size(111, 33);
+            this.addEmployee_printBtn.TabIndex = 18;
+            this.addEmployee_printBtn.Text = "Print";
+            this.addEmployee_printBtn.UseVisualStyleBackColor = false;
+            this.addEmployee_printBtn.Click += new System.EventHandler(this.addEmployee_printBtn_Click);
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,5 +378,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.ComboBox addEmployee_status;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button addEmployee_printBtn;
     }
 }

@@ -1,0 +1,119 @@
+CREATE DATABASE STORE
+
+USE STORE
+
+CREATE table customer(
+	customer_id int PRIMARY KEY not null,
+    first_name varchar(255), 
+    last_name varchar(255), 
+    phone varchar(55), 
+    email varchar(255), 
+    street varchar(255),
+    city varchar(50),
+    [state] varchar(25),
+    zip_code varchar(5)
+);
+
+CREATE table product(
+	product_id int PRIMARY KEY not null,
+    product_name varchar(255) not null,
+    model_year smallint not null,
+    list_price decimal(10,2) not null
+);
+
+CREATE table staff(
+	staff_id int PRIMARY KEY not null,
+    first_name varchar(50) not null,
+    last_nam varchar(50) not null,
+    email varchar(255) not null,
+    phone varchar(25) not null,
+    active tinyint not null,
+    store_id  int not null
+   
+);
+CREATE table store(
+    store_id int PRIMARY KEY not null,
+    store_name varchar(255) not null,
+    phone varchar(25),
+    email varchar(255),
+    street varchar(255),
+    city varchar(255),
+    [state] varchar(10),
+    zip_code varchar(5),   
+);
+
+CREATE table order_item(
+	item_id int PRIMARY KEY not null,
+    order_id int,
+    product_id int not null,
+    quantity int not null,
+    list_price decimal(10,2) not null,
+    discount decimal(4,2) not null
+);
+
+CREATE table staf(
+	staff_id int PRIMARY KEY not null,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    email varchar(255) not null,
+    phone varchar(25) not null,
+    active tinyint not null,
+    store_id int not null
+   
+);
+
+CREATE table [Order](
+	order_id int PRIMARY KEY not null,
+    customer_id int, 
+	order_status tinyint not null,
+    order_date date  not null,
+    require_date date not null,
+    shipped_date date,
+	store_id  int not null,
+    staff_id  int not null
+  
+);
+
+ insert into CUSTOMER values(1001,'Yaja','Jay',NULL,'yaj.ya@yahoo.com','9273 Thorne Ave. ','Orchard Park','NY',6019)
+ insert into CUSTOMER values(1002,'Robzkie','Talino',NULL,'yaj.ya@yahoo.com','9273 Thorne Ave. ','Orchard Park','NY',6019)
+ insert into CUSTOMER values(1003,'Jerume','Cruz',NULL,'jerume@yahoo.com','9273 Thorne Ave. ','Orchard Park','NY',6019)
+ insert into CUSTOMER values(1004,'John','Dinops',NULL,'johndinop@yahoo.com','9273 Thorne Ave. ','Orchard Park','NY',6019)
+
+
+INSERT INTO product(product_id, product_name, model_year, list_price) VALUES(1,'Trek 820 - 2016',2016,379.99)
+INSERT INTO product(product_id, product_name, model_year, list_price) VALUES(2,'Ritchey Timberwolf Frameset - 2016',2016,749.99)
+INSERT INTO product(product_id, product_name, model_year, list_price) VALUES(3,'Surly Wednesday Frameset - 2016',2016,999.99)
+INSERT INTO product(product_id, product_name, model_year, list_price) VALUES(4,'Trek Fuel EX 8 29 - 2016',2016,2899.99)
+INSERT INTO product(product_id, product_name, model_year, list_price) VALUES(5,'Heller Shagamaw Frame - 2016',2016,1320.99)
+INSERT INTO product(product_id, product_name, model_year, list_price) VALUES(6,'Surly Ice Cream Truck Frameset - 2016',2016,469.99)
+
+SELECT * FROM customer;
+
+SELECT * FROM product;
+update customer set city = 'CEBU CITY';
+update customer set state = 'PH';
+
+--4
+CREATE PROCEDURE sp_NewOrder @oderId int, @customerId int, @orderStatus tinyint, @orderDate Date, @requiredDate Date, @shipDate Date, @storeId int, @staffId int
+AS
+INSERT INTO [Order](order_id, customer_id, order_status, order_date, require_date, shipped_date, store_id, staff_id)
+Values (@oderId , @customerId , @orderStatus , @orderDate , @requiredDate , @shipDate , @storeId , @staffId )
+
+exec sp_NewOrder 101,1001,4,'20160901','20160902','20160902',1,1
+exec sp_NewOrder 102,1002,4,'20160901','20160902','20160902',2,2
+exec sp_NewOrder 102,1002,4,'20160901','20160902','20160902',2,2
+
+
+
+--5
+CREATE PROCEDURE sp_NewOrderItem @itemId int, @orderId int, @productId int, @quantity int, @price decimal(10,2), @discount decimal(4,2)
+AS
+INSERT INTO Order_item(item_id, order_id, product_id, quantity, list_price, discount )
+Values (@itemId, @orderId, @productId, @quantity, @price, @discount )
+
+
+--6
+
+CREATE PROCEDURE sp_GetItemsByCustomerId @customerId int
+as 
+INSER

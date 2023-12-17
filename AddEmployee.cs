@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using System.Security.Cryptography.X509Certificates;
+using System.Drawing.Printing;
 
 namespace EmployeeManagementSystem
 {
@@ -374,5 +375,51 @@ namespace EmployeeManagementSystem
 
             }   
         }
+
+        private void addEmployee_printBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PrintDialog printDialog = new PrintDialog();
+                PrintDocument printDocument = new PrintDocument();
+
+                printDialog.Document = printDocument;
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+                    printDocument.Print();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            try
+            {
+                // Example: Printing employee data
+                StringBuilder printContent = new StringBuilder();
+
+                printContent.AppendLine("Employee ID: " + addEmployee_id.Text.Trim());
+                printContent.AppendLine("Full Name: " + addEmployee_fullName.Text.Trim());
+                printContent.AppendLine("Gender: " + addEmployee_gender.Text.Trim());
+                printContent.AppendLine("Phone Number: " + addEmployee_phoneNumber.Text.Trim());
+                printContent.AppendLine("Position: " + addEmployee_position.Text.Trim());
+                printContent.AppendLine("Status: " + addEmployee_status.Text.Trim());
+
+                // Print the content
+                e.Graphics.DrawString(printContent.ToString(), new Font("Arial", 12), Brushes.Black, 10, 10);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

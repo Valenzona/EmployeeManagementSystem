@@ -39,8 +39,8 @@ namespace EmployeeManagementSystem
             this.dashboard_AE = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.dashboard_TE = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -77,7 +77,6 @@ namespace EmployeeManagementSystem
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(216, 115);
             this.panel5.TabIndex = 2;
-            
             // 
             // dashboard_IE
             // 
@@ -88,7 +87,7 @@ namespace EmployeeManagementSystem
             this.dashboard_IE.Size = new System.Drawing.Size(32, 33);
             this.dashboard_IE.TabIndex = 5;
             this.dashboard_IE.Text = "0";
-            
+            this.dashboard_IE.Click += new System.EventHandler(this.dashboard_IE_Click);
             // 
             // label6
             // 
@@ -99,7 +98,6 @@ namespace EmployeeManagementSystem
             this.label6.Size = new System.Drawing.Size(169, 19);
             this.label6.TabIndex = 4;
             this.label6.Text = "InActive Employees";
-            
             // 
             // panel4
             // 
@@ -110,6 +108,7 @@ namespace EmployeeManagementSystem
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(231, 115);
             this.panel4.TabIndex = 1;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // dashboard_AE
             // 
@@ -130,6 +129,7 @@ namespace EmployeeManagementSystem
             this.label4.Size = new System.Drawing.Size(157, 19);
             this.label4.TabIndex = 2;
             this.label4.Text = " Active Employees";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel3
             // 
@@ -141,16 +141,6 @@ namespace EmployeeManagementSystem
             this.panel3.Size = new System.Drawing.Size(215, 115);
             this.panel3.TabIndex = 0;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 19);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Total Employees";
-            // 
             // dashboard_TE
             // 
             this.dashboard_TE.AutoSize = true;
@@ -160,6 +150,18 @@ namespace EmployeeManagementSystem
             this.dashboard_TE.Size = new System.Drawing.Size(32, 33);
             this.dashboard_TE.TabIndex = 4;
             this.dashboard_TE.Text = "0";
+            this.dashboard_TE.Click += new System.EventHandler(this.dashboard_TE_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(37, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(144, 19);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Total Employees";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Dashboard
             // 
